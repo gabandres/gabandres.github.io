@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Agenda</title>
+    <style>
+      :root {
+        --bg: #0b0a14;
+        --bg2: #141133;
+        --text: #f2f0fa;
+        --muted: rgba(240, 238, 250, 0.62);
+        --faint: rgba(240, 238, 250, 0.36);
+        --accent: #8c89ff;
+        --hairline: rgba(235, 235, 245, 0.14);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f4f3f8;
+          --bg2: #e9e7f4;
+          --text: #14121f;
+          --muted: rgba(20, 18, 31, 0.66);
+          --faint: rgba(20, 18, 31, 0.42);
+          --accent: #5b57f2;
+          --hairline: rgba(20, 18, 31, 0.12);
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: linear-gradient(168deg, var(--bg2) 0%, var(--bg) 55%, var(--bg) 100%);
+        background-attachment: fixed;
+        color: var(--text);
+        font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding: 0 20px 96px;
+      }
+      main { max-width: 640px; margin: 0 auto; }
+      header { padding: 72px 0 40px; }
+      .eyebrow {
+        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 10px;
+      }
+      h1 { font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; margin: 0 0 14px; font-weight: 700; }
+      .lede { font-size: 19px; color: var(--muted); margin: 0; }
+      h2 {
+        font-size: 20px; letter-spacing: -0.35px; font-weight: 650;
+        margin: 44px 0 10px; padding-top: 22px; border-top: 1px solid var(--hairline);
+      }
+      p { margin: 0 0 14px; color: var(--muted); }
+      p.strong { color: var(--text); }
+      ul { margin: 0 0 14px; padding-left: 22px; color: var(--muted); }
+      li { margin-bottom: 8px; }
+      a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+      a:hover { border-bottom-color: var(--accent); }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.88em; background: var(--hairline); padding: 1px 6px; border-radius: 5px;
+      }
+      footer {
+        margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--hairline);
+        color: var(--faint); font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Agenda for iOS</p>
+        <h1>Privacy Policy</h1>
+        <p class="lede">
+          Agenda keeps a private record of return visits and bible studies. Everything you write
+          stays on your iPhone, encrypted. There is no account, no cloud storage and no analytics.
+        </p>
+      </header>
+
+      <h2>What Agenda stores</h2>
+      <p>
+        Everything you enter — names, addresses, phone numbers, notes, visit dates, study details
+        and service hours — is written to an encrypted database file inside the app's own storage
+        on your device.
+      </p>
+      <p>
+        That database is encrypted with SQLCipher. The encryption key is random, and is itself
+        protected by the passphrase you choose when you first open the app: your passphrase derives
+        a key (via scrypt) that unwraps the database key using AES-256-GCM. The wrapped key is held
+        in the iOS Keychain, marked so that it never syncs to iCloud or transfers to another device.
+      </p>
+      <p class="strong">
+        Nobody can recover your passphrase, including the developer. If you forget it, the data is
+        permanently unreadable. This is a deliberate design choice, not an oversight.
+      </p>
+
+      <h2>What Agenda never does</h2>
+      <ul>
+        <li>It does not upload, sync or back up your entries anywhere.</li>
+        <li>It has no user accounts and no login server.</li>
+        <li>It contains no analytics, telemetry, advertising or tracking of any kind.</li>
+        <li>It contains no third-party advertising or marketing SDKs.</li>
+        <li>It does not share, sell or disclose your information to anyone.</li>
+      </ul>
+
+      <h2>Location</h2>
+      <p>
+        If you choose to save a location for a person, Agenda asks for permission to read your
+        device's current coordinates once, at that moment. The coordinates are stored in the same
+        encrypted database and used only to place a pin on the map inside the app.
+      </p>
+      <p>
+        Location is never transmitted anywhere. The permission is optional — declining it only means
+        you cannot capture coordinates automatically. Agenda does not track your location in the
+        background.
+      </p>
+
+      <h2>Face ID</h2>
+      <p>
+        If you enable Face ID, the check is performed entirely by iOS. Agenda receives only a
+        yes-or-no answer and never has access to your biometric data, which never leaves Apple's
+        Secure Enclave.
+      </p>
+
+      <h2>Over-the-air updates</h2>
+      <p>
+        Agenda uses Expo's update service so improvements can be delivered without a full App Store
+        release. This is the one connection the app makes. On launch it contacts
+        <code>u.expo.dev</code> to ask whether a newer version of the app's code exists.
+      </p>
+      <p>
+        That request carries technical information only — the platform, the app's runtime and update
+        identifiers — and, as with any internet request, your device's IP address is visible to the
+        server. <strong>No part of your agenda is included, and none of your entries, notes,
+        contacts or locations are sent.</strong>
+      </p>
+      <p>
+        Expo's own privacy practices are described at
+        <a href="https://expo.dev/privacy" rel="noopener">expo.dev/privacy</a>.
+      </p>
+
+      <h2>Exporting your data</h2>
+      <p>
+        Agenda can export a copy of everything as a JSON file through the iOS share sheet. This
+        happens only when you ask for it, and you choose where the file goes.
+      </p>
+      <p class="strong">
+        The exported file is not encrypted, so that you can open it on a computer. Once it leaves
+        the app it is an ordinary file on your device, and this policy no longer governs it —
+        handle it accordingly.
+      </p>
+
+      <h2>Deleting your data</h2>
+      <p>
+        "Erase everything" in Settings deletes the encrypted database and the stored key, leaving
+        nothing recoverable. Deleting the app from your iPhone has the same effect. Because nothing
+        was ever uploaded, there is no copy anywhere else to request the deletion of.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        Agenda is a personal record-keeping tool intended for adults. It does not knowingly collect
+        information from children, because it does not collect information from anyone.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this policy changes, the revised version will be published at this address with a new
+        date below. Material changes to how data is handled would also be described in the app's
+        release notes.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy can be directed to the developer via
+        <a href="https://github.com/gabandres" rel="noopener">github.com/gabandres</a>.
+      </p>
+
+      <footer>Last updated 15 August 2026.</footer>
+    </main>
+  </body>
+</html>
