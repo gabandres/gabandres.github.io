@@ -13,3 +13,13 @@ no user data. The policy describes this in full.
 
 This repository is public only because the App Store requires a publicly reachable privacy policy
 URL. The app's source is not here.
+
+## This page is also the Support URL
+
+Version 1.0 was submitted with App Store Connect's *Support URL* pointing here as well as its
+*Privacy Policy URL*, and version metadata is locked while a version is in review. So this page
+carries a support section — contact address and a link onward — to satisfy Guideline 1.5, which
+wants somewhere users can actually get help. The full answers live at
+[`/agenda-support/`](../agenda-support/); point the Support URL there on the next version.
+
+Support contact: `support@bermudezsystems.com`.

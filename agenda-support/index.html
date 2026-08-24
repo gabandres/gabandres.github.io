@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Soporte — Agenda</title>
+    <meta
+      name="description"
+      content="Ayuda y contacto para la app Agenda. Support and contact for the Agenda iOS app."
+    />
+    <style>
+      :root {
+        --bg: #0b0a14;
+        --bg2: #141133;
+        --text: #f2f0fa;
+        --muted: rgba(240, 238, 250, 0.62);
+        --faint: rgba(240, 238, 250, 0.36);
+        --accent: #8c89ff;
+        --accent-wash: rgba(140, 137, 255, 0.1);
+        --hairline: rgba(235, 235, 245, 0.14);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f4f3f8;
+          --bg2: #e9e7f4;
+          --text: #14121f;
+          --muted: rgba(20, 18, 31, 0.66);
+          --faint: rgba(20, 18, 31, 0.42);
+          --accent: #4b47e0;
+          --accent-wash: rgba(75, 71, 224, 0.08);
+          --hairline: rgba(20, 18, 31, 0.12);
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: linear-gradient(168deg, var(--bg2) 0%, var(--bg) 55%, var(--bg) 100%);
+        background-attachment: fixed;
+        color: var(--text);
+        font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding: 0 20px 96px;
+      }
+      main { max-width: 640px; margin: 0 auto; }
+      header { padding: 72px 0 32px; }
+      .eyebrow {
+        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 10px;
+      }
+      h1 { font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; margin: 0 0 14px; font-weight: 700; }
+      .lede { font-size: 19px; color: var(--muted); margin: 0; }
+      h2 {
+        font-size: 20px; letter-spacing: -0.35px; font-weight: 650;
+        margin: 44px 0 10px; padding-top: 22px; border-top: 1px solid var(--hairline);
+      }
+      h3 {
+        font-size: 17px; font-weight: 650; letter-spacing: -0.2px;
+        margin: 26px 0 6px; color: var(--text);
+      }
+      p { margin: 0 0 14px; color: var(--muted); }
+      p.strong { color: var(--text); }
+      ul { margin: 0 0 14px; padding-left: 22px; color: var(--muted); }
+      li { margin-bottom: 8px; }
+      a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+      a:hover { border-bottom-color: var(--accent); }
+      code, .path {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.88em; background: var(--hairline); padding: 1px 6px; border-radius: 5px;
+        color: var(--text);
+      }
+      .card {
+        background: var(--accent-wash);
+        border: 1px solid var(--hairline);
+        border-radius: 14px;
+        padding: 22px 24px;
+        margin: 0 0 8px;
+      }
+      .card p:last-child { margin-bottom: 0; }
+      .card .label {
+        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 8px;
+      }
+      .email {
+        font-size: 21px; font-weight: 650; letter-spacing: -0.3px;
+        display: inline-block; margin-bottom: 12px;
+      }
+      .switch { font-size: 15px; color: var(--muted); margin: 0; padding: 18px 0 0; }
+      footer {
+        margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--hairline);
+        color: var(--faint); font-size: 14px;
+      }
+      footer a { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Agenda para iOS</p>
+        <h1>Soporte</h1>
+        <p class="lede">
+          Ayuda para Agenda, la app que lleva tu registro de revisitas, cursos bíblicos y horas de
+          servicio. Escríbeme y te contesto yo, no un formulario.
+        </p>
+      </header>
+
+      <div class="card">
+        <p class="label">Contacto</p>
+        <a class="email" href="mailto:support@bermudezsystems.com">support@bermudezsystems.com</a>
+        <p>
+          Escribe en español o en inglés. Normalmente contesto dentro de dos o tres días hábiles.
+        </p>
+        <p>
+          Si reportas un problema, ayuda mucho saber: el modelo (iPhone o iPad), la versión de iOS,
+          qué esperabas que pasara y qué pasó en su lugar.
+        </p>
+        <p class="strong">
+          Nunca me envíes tu contraseña, ni capturas con nombres, direcciones o notas de las
+          personas que visitas. No los necesito para ayudarte, y esos datos son tuyos.
+        </p>
+      </div>
+      <p class="switch">Scroll down for <a href="#english">support in English</a>.</p>
+
+      <h2>Tu contraseña</h2>
+
+      <h3>Olvidé mi contraseña. ¿Cómo la recupero?</h3>
+      <p class="strong">No se puede, y no es un descuido: es como está construida la app.</p>
+      <p>
+        Agenda cifra la base de datos con una llave derivada de tu contraseña. Esa contraseña no se
+        guarda en ninguna parte — ni en el dispositivo, ni conmigo, ni en Apple. No hay cuenta ni
+        correo de recuperación porque no hay servidor donde tener una. Sin la contraseña, los datos
+        quedan cerrados para siempre.
+      </p>
+      <p>
+        Lo único que puede rescatarte es una copia de seguridad cuya contraseña sí recuerdes. Si
+        tienes una, instala Agenda de nuevo y restáurala como se explica abajo.
+      </p>
+
+      <h3>Quiero cambiar mi contraseña</h3>
+      <p>
+        <span class="path">Ajustes → Seguridad → Cambiar contraseña</span>. Necesitas la actual.
+        Cambiarla vuelve a proteger la misma base de datos; no se pierde nada.
+      </p>
+
+      <h2>Copias de seguridad y cambio de dispositivo</h2>
+
+      <h3>¿Cómo hago una copia de seguridad?</h3>
+      <p>
+        <span class="path">Ajustes → Copia de seguridad → Crear copia cifrada</span>. Te pide una
+        contraseña para la copia, que puede ser distinta de la de la app. El archivo sale por la
+        hoja de compartir de iOS y tú eliges dónde guardarlo.
+      </p>
+      <p>
+        Guárdalo en iCloud Drive: así sigue ahí aunque cambies de dispositivo o pierdas el que
+        tienes. Sin la contraseña de la copia el archivo no se puede leer — si la olvidas, esa copia
+        se pierde igual que los datos.
+      </p>
+
+      <h3>Voy a cambiar de iPhone o iPad. ¿Cómo llevo mis datos?</h3>
+      <p>
+        Agenda no sincroniza entre dispositivos, así que la copia cifrada es la forma de moverlos.
+      </p>
+      <ul>
+        <li>
+          <strong>Antes:</strong> crea una copia cifrada y guárdala donde puedas alcanzarla desde el
+          dispositivo nuevo.
+        </li>
+        <li>
+          <strong>Después:</strong> instala Agenda. En la pantalla de bienvenida
+          <em>«¿Ya tienes datos?»</em>, o más tarde en
+          <span class="path">Ajustes → Copia de seguridad → Restaurar desde archivo</span>, abre el
+          archivo y escribe la contraseña de la copia.
+        </li>
+      </ul>
+
+      <h3>«Contraseña incorrecta para esta copia»</h3>
+      <p>
+        Esa es la contraseña que escribiste al <em>crear</em> la copia, no necesariamente la de la
+        app. Si son distintas y no recuerdas la de la copia, el archivo no se puede abrir.
+      </p>
+
+      <h3>¿Cuál es la diferencia entre «Importar copia» y «Restaurar desde archivo»?</h3>
+      <ul>
+        <li>
+          <span class="path">Ajustes → Datos → Importar copia</span> lee un archivo de Agenda y
+          <strong>añade</strong> a lo que ya tienes. No borra nada.
+        </li>
+        <li>
+          <span class="path">Ajustes → Copia de seguridad → Restaurar desde archivo</span> abre una
+          copia cifrada con su contraseña.
+        </li>
+      </ul>
+
+      <h2>Tus datos</h2>
+
+      <h3>¿Puedo abrir mis datos en una computadora?</h3>
+      <p>
+        Sí. <span class="path">Ajustes → Datos → Exportar copia</span> genera un archivo JSON
+        <strong>sin cifrar</strong>, hecho justamente para eso.
+      </p>
+      <p class="strong">
+        Como no está cifrado, en cuanto sale de la app es un archivo común y corriente: quien lo
+        abra lo lee. Guárdalo con el mismo cuidado con que tratarías la libreta.
+      </p>
+
+      <h3>¿Cómo borro todo?</h3>
+      <p>
+        <span class="path">Ajustes → Datos → Borrar todo</span>. Se elimina la base cifrada y la
+        contraseña; no queda nada que recuperar. Borrar la app del dispositivo hace lo mismo.
+      </p>
+      <p>
+        Como nada se subió nunca a ningún servidor, no hay otra copia en ninguna parte que pedirme
+        que elimine.
+      </p>
+
+      <h2>Abrir la app</h2>
+
+      <h3>Face ID no me abre la app</h3>
+      <p>
+        Face ID solo te ahorra teclear; tu contraseña siempre funciona. Si Face ID falla, escríbela.
+      </p>
+      <p>
+        Se activa y desactiva en
+        <span class="path">Ajustes → Seguridad → Abrir con Face ID</span>. Si iOS lo desactivó tras
+        varios intentos fallidos, desbloquea el dispositivo con su código y vuelve a entrar.
+      </p>
+
+      <h3>La app me pide la contraseña demasiado seguido</h3>
+      <p>
+        <span class="path">Ajustes → Seguridad → Bloqueo automático</span>: al salir, 1 minuto, 5
+        minutos o nunca. También puedes cerrarla a propósito con <em>Bloquear ahora</em>.
+      </p>
+
+      <h2>Mapa, informe y ajustes</h2>
+
+      <h3>El mapa no muestra a nadie</h3>
+      <p>
+        El mapa solo muestra a las personas a las que les guardaste una ubicación. Guarda una en
+        alguien y aparecerá ahí.
+      </p>
+      <p>
+        El permiso de ubicación es opcional y se pide en el momento de guardarla. Si lo rechazaste,
+        actívalo en los ajustes de iOS, en
+        <span class="path">Ajustes → Agenda → Ubicación</span>.
+      </p>
+
+      <h3>Las horas del informe no cuadran con lo que registré</h3>
+      <p>
+        El informe muestra lo que se puede reportar, que no siempre es lo mismo que lo que
+        trabajaste. Donde los dos números difieren, Agenda los enseña lado a lado para que veas de
+        dónde sale cada uno. Si aun así no cuadra, escríbeme con el mes y los dos números.
+      </p>
+
+      <h3>Cambiar el idioma, la meta de horas o la apariencia</h3>
+      <ul>
+        <li><span class="path">Ajustes → Idioma</span> — español o inglés.</li>
+        <li>
+          <span class="path">Ajustes → Meta de horas</span> — regular, 600 al año; auxiliar, 30 al
+          mes.
+        </li>
+        <li><span class="path">Ajustes → Apariencia</span> — sistema, claro u oscuro.</li>
+      </ul>
+
+      <h3>¿Cómo actualizo la app?</h3>
+      <p>
+        <span class="path">Ajustes → Buscar actualización</span>. Las mejoras del código llegan
+        directamente, sin esperar a la App Store.
+      </p>
+
+      <h2>Requisitos y privacidad</h2>
+      <p>iPhone o iPad con iOS o iPadOS 18 o posterior.</p>
+      <p>
+        Agenda no tiene cuentas, ni analítica, ni rastreo, y no sube tus datos a ningún lado. Los
+        detalles están en la <a href="../agenda-privacy/">política de privacidad</a>.
+      </p>
+
+      <h2 id="english" lang="en">Support in English</h2>
+      <div class="card" lang="en">
+        <p class="label">Contact</p>
+        <a class="email" href="mailto:support@bermudezsystems.com">support@bermudezsystems.com</a>
+        <p>
+          Write in English or Spanish. I normally reply within two or three business days, and it is
+          me answering, not a form.
+        </p>
+        <p>
+          For a bug report it helps to know: iPhone or iPad, your iOS version, what you expected to
+          happen, and what happened instead.
+        </p>
+        <p class="strong">
+          Never send me your password, or screenshots showing the names, addresses or notes of the
+          people you visit. I do not need them to help you, and they are yours.
+        </p>
+      </div>
+
+      <div lang="en">
+        <h3>I forgot my password. How do I recover it?</h3>
+        <p class="strong">You cannot. That is the design, not an oversight.</p>
+        <p>
+          Agenda encrypts its database with a key derived from your password. The password is stored
+          nowhere — not on the device, not with me, not with Apple. There is no account and no
+          recovery email, because there is no server to keep one on. Without the password the data
+          is closed for good. The only way back is an encrypted backup whose password you do
+          remember.
+        </p>
+
+        <h3>How do I back up, or move to a new device?</h3>
+        <p>
+          <span class="path">Settings → Backup → Create encrypted backup</span> asks for a backup
+          password (it can differ from the app's) and hands you the file through the iOS share
+          sheet. Keep it in iCloud Drive so it survives the device.
+        </p>
+        <p>
+          On the new device, install Agenda and use the welcome screen's
+          <em>"Already have data?"</em> step, or
+          <span class="path">Settings → Backup → Restore from file</span>. Agenda does not sync
+          between devices, so the backup is how data moves.
+        </p>
+
+        <h3>Can I open my data on a computer?</h3>
+        <p>
+          <span class="path">Settings → Data → Export a copy</span> writes an
+          <strong>unencrypted</strong> JSON file for exactly that. Once it leaves the app it is an
+          ordinary file that anyone who opens it can read — look after it accordingly.
+        </p>
+        <p>
+          <span class="path">Settings → Data → Import a copy</span> adds an Agenda backup to what you
+          already have and deletes nothing.
+        </p>
+
+        <h3>How do I erase everything?</h3>
+        <p>
+          <span class="path">Settings → Data → Erase everything</span> deletes the encrypted database
+          and your password, leaving nothing to recover. Deleting the app does the same. Nothing was
+          ever uploaded, so there is no other copy anywhere for you to ask me to delete.
+        </p>
+
+        <h3>Face ID will not open the app</h3>
+        <p>
+          Face ID only saves you typing — your password always works. Turn it on or off in
+          <span class="path">Settings → Security → Unlock with Face ID</span>. If iOS disabled it
+          after failed attempts, unlock the device with its passcode and try again.
+          <span class="path">Settings → Security → Auto-lock</span> controls how often the app asks.
+        </p>
+
+        <h3>The map is empty</h3>
+        <p>
+          The map shows only people you saved a location for. The location permission is optional and
+          asked for at the moment you save one; if you declined it, enable it in iOS
+          <span class="path">Settings → Agenda → Location</span>.
+        </p>
+
+        <h3>The report hours do not match what I logged</h3>
+        <p>
+          The report shows what may be reported, which is not always what was worked. Where the two
+          differ Agenda shows them side by side. If it still looks wrong, email me the month and both
+          numbers.
+        </p>
+
+        <h3>Requirements and privacy</h3>
+        <p>
+          iPhone or iPad running iOS or iPadOS 18 or later. Agenda has no accounts, no analytics and
+          no tracking, and uploads nothing; the <a href="../agenda-privacy/">privacy policy</a> has
+          the detail.
+        </p>
+      </div>
+
+      <footer>
+        <a href="../agenda-privacy/">Política de privacidad · Privacy policy</a><br />
+        Última actualización · Last updated 24 August 2026.
+      </footer>
+    </main>
+  </body>
+</html>

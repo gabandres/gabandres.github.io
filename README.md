@@ -9,3 +9,10 @@ saved in the iCloud Keychain.
 
 Nothing here is secret. An association file only names an app that is allowed to
 claim the domain; it grants nothing to anyone else.
+
+It also hosts the two public pages the App Store requires for the **Agenda** app:
+
+| Path | Purpose |
+| --- | --- |
+| [`/agenda-privacy/`](agenda-privacy/) | Privacy Policy URL — and, for version 1.0, the Support URL too |
+| [`/agenda-support/`](agenda-support/) | Support page (Guideline 1.5); the Support URL to use from the next version on |

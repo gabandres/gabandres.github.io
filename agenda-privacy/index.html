@@ -12,6 +12,7 @@
         --muted: rgba(240, 238, 250, 0.62);
         --faint: rgba(240, 238, 250, 0.36);
         --accent: #8c89ff;
+        --accent-wash: rgba(140, 137, 255, 0.1);
         --hairline: rgba(235, 235, 245, 0.14);
       }
       @media (prefers-color-scheme: light) {
@@ -21,7 +22,8 @@
           --text: #14121f;
           --muted: rgba(20, 18, 31, 0.66);
           --faint: rgba(20, 18, 31, 0.42);
-          --accent: #5b57f2;
+          --accent: #4b47e0;
+          --accent-wash: rgba(75, 71, 224, 0.08);
           --hairline: rgba(20, 18, 31, 0.12);
         }
       }
@@ -57,10 +59,27 @@
         font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
         font-size: 0.88em; background: var(--hairline); padding: 1px 6px; border-radius: 5px;
       }
+      .card {
+        background: var(--accent-wash);
+        border: 1px solid var(--hairline);
+        border-radius: 14px;
+        padding: 22px 24px;
+        margin: 0 0 8px;
+      }
+      .card p:last-child { margin-bottom: 0; }
+      .card .label {
+        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 8px;
+      }
+      .email {
+        font-size: 21px; font-weight: 650; letter-spacing: -0.3px;
+        display: inline-block; margin-bottom: 12px;
+      }
       footer {
         margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--hairline);
         color: var(--faint); font-size: 14px;
       }
+      footer a { color: var(--muted); }
     </style>
   </head>
   <body>
@@ -73,6 +92,23 @@
           stays on your iPhone, encrypted. There is no account, no cloud storage and no analytics.
         </p>
       </header>
+
+      <div class="card">
+        <p class="label">Soporte · Support</p>
+        <a class="email" href="mailto:support@bermudezsystems.com">support@bermudezsystems.com</a>
+        <p lang="es">
+          ¿Necesitas ayuda con la app? Escríbeme en español o en inglés; normalmente contesto
+          dentro de dos o tres días hábiles. Las preguntas más comunes —
+          contraseña olvidada, copias de seguridad, cambiar de dispositivo, borrar todo — están
+          respondidas en la <a href="../agenda-support/">página de soporte</a>.
+        </p>
+        <p>
+          Need help with the app? Write in English or Spanish; I normally reply within two or three
+          business days. The common questions — a forgotten password, backups, moving to a new
+          device, erasing everything — are answered on the
+          <a href="../agenda-support/">support page</a>.
+        </p>
+      </div>
 
       <h2>What Agenda stores</h2>
       <p>
@@ -167,13 +203,29 @@
         release notes.
       </p>
 
-      <h2>Contact</h2>
+      <h2>Support and contact</h2>
       <p>
-        Questions about this policy can be directed to the developer via
-        <a href="https://github.com/gabandres" rel="noopener">github.com/gabandres</a>.
+        Questions about this policy, about the app, or about anything that is not working go to the
+        same place — the developer, directly:
+      </p>
+      <p class="strong">
+        <a href="mailto:support@bermudezsystems.com">support@bermudezsystems.com</a>
+      </p>
+      <p>
+        Write in English or Spanish. Replies normally come within two or three business days.
+        Step-by-step answers to the questions that come up most — a forgotten password, making and
+        restoring backups, moving to a new device, exporting to a computer, erasing everything — are
+        on the <a href="../agenda-support/">support page</a>.
+      </p>
+      <p>
+        Please do not include your password, or screenshots showing the names, addresses or notes of
+        the people you visit. None of that is needed to help you, and it is yours.
       </p>
 
-      <footer>Last updated 15 August 2026.</footer>
+      <footer>
+        <a href="../agenda-support/">Soporte · Support</a><br />
+        Last updated 24 August 2026.
+      </footer>
     </main>
   </body>
 </html>
