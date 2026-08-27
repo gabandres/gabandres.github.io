@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Request an invitation — Callbook</title>
+    <meta
+      name="description"
+      content="Callbook is a private record of return visits, bible studies and service hours for iPhone and iPad. It is available by invitation."
+    />
+    <style>
+      :root {
+        --bg: #0b0a14;
+        --bg2: #141133;
+        --text: #f2f0fa;
+        --muted: rgba(240, 238, 250, 0.62);
+        --faint: rgba(240, 238, 250, 0.36);
+        --accent: #8c89ff;
+        --accent-wash: rgba(140, 137, 255, 0.1);
+        --hairline: rgba(235, 235, 245, 0.14);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f4f3f8;
+          --bg2: #e9e7f4;
+          --text: #14121f;
+          --muted: rgba(20, 18, 31, 0.66);
+          --faint: rgba(20, 18, 31, 0.42);
+          --accent: #4b47e0;
+          --accent-wash: rgba(75, 71, 224, 0.08);
+          --hairline: rgba(20, 18, 31, 0.12);
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: linear-gradient(168deg, var(--bg2) 0%, var(--bg) 55%, var(--bg) 100%);
+        background-attachment: fixed;
+        color: var(--text);
+        font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding: 0 20px 96px;
+      }
+      main { max-width: 640px; margin: 0 auto; }
+      header { padding: 72px 0 40px; }
+      .eyebrow {
+        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 10px;
+      }
+      h1 { font-size: 36px; line-height: 1.15; letter-spacing: -0.9px; margin: 0 0 14px; font-weight: 700; }
+      .lede { font-size: 19px; color: var(--muted); margin: 0; }
+      h2 {
+        font-size: 20px; letter-spacing: -0.35px; font-weight: 650;
+        margin: 44px 0 10px; padding-top: 22px; border-top: 1px solid var(--hairline);
+      }
+      p { margin: 0 0 14px; color: var(--muted); }
+      p.strong { color: var(--text); }
+      ul { margin: 0 0 14px; padding-left: 22px; color: var(--muted); }
+      li { margin-bottom: 8px; }
+      a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+      a:hover { border-bottom-color: var(--accent); }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.88em; background: var(--hairline); padding: 1px 6px; border-radius: 5px;
+      }
+      .card {
+        background: var(--accent-wash);
+        border: 1px solid var(--hairline);
+        border-radius: 14px;
+        padding: 22px 24px;
+        margin: 0 0 8px;
+      }
+      .card p:last-child { margin-bottom: 0; }
+      .card .label {
+        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 8px;
+      }
+      .email {
+        font-size: 21px; font-weight: 650; letter-spacing: -0.3px;
+        display: inline-block; margin-bottom: 12px;
+      }
+      footer {
+        margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--hairline);
+        color: var(--faint); font-size: 14px;
+      }
+      footer a { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Callbook for iPhone and iPad</p>
+        <h1>Request an invitation</h1>
+        <p class="lede">
+          Callbook keeps a private record of return visits, bible studies and service hours.
+          It is not sold and it is not listed publicly — you get in by asking.
+        </p>
+      </header>
+
+      <div class="card">
+        <p class="label">Ask for one</p>
+        <a class="email" href="mailto:support@bermudezsystems.com?subject=Callbook%20invitation"
+          >support@bermudezsystems.com</a
+        >
+        <p lang="es">
+          Escríbeme en español o en inglés, y dime el nombre que quieres que lleve la invitación.
+          Te contesto con un enlace. Ábrelo en el iPhone o iPad donde vas a usar la app y la
+          pantalla de bienvenida se completa sola.
+        </p>
+        <p>
+          Write in English or Spanish, and tell me the name the invitation should be issued to.
+          I'll reply with a link. Open it on the iPhone or iPad you intend to use, and the welcome
+          screen fills itself in.
+        </p>
+      </div>
+
+      <h2>Why it works this way</h2>
+      <p>
+        Callbook has no accounts and no server. Everything you write is encrypted on your own
+        device with a passphrase only you know — which means that if you forget it, nobody,
+        including me, can get your notes back. That is the point of the design, and it is also why
+        handing the app to strangers is a bad idea: there is nobody to call when it goes wrong
+        except the person who wrote it.
+      </p>
+      <p>
+        So it goes out one person at a time. An invitation is a link signed with a key I hold; the
+        app checks the signature on the device, without contacting anything. Nothing about you is
+        sent anywhere when you use it, and there is nothing for me to look up afterwards.
+      </p>
+
+      <h2>What it does</h2>
+      <ul>
+        <li>People you call on, when you last went, and when you said you would go back.</li>
+        <li>Bible studies, with their own history.</li>
+        <li>Service hours, split into ministry and credit, and the monthly report they add up to.</li>
+        <li>Hour goals for regular and auxiliary pioneers. Publishers can log hours too — their report simply doesn't have a line for them.</li>
+        <li>English and Spanish. Your notes, a map of your calls, and an encrypted backup you keep yourself.</li>
+      </ul>
+      <p>
+        It needs iOS 18 or later. It was called <strong>Agenda</strong> before; same app, clearer
+        name.
+      </p>
+
+      <h2>An invitation does not expire</h2>
+      <p>
+        Keep the link. If you reinstall the app, get a new phone, or restore from your own backup,
+        the same link works again — an invitation that stopped working would only ever lock out
+        somebody who already had permission. If you lose it, write to me and I'll send another.
+      </p>
+      <p class="strong">
+        The link is not a password and it is not a key. It opens the door once, at first run;
+        your passphrase is what encrypts your data, and the two have nothing to do with each other.
+      </p>
+
+      <footer>
+        <p>
+          <a href="../agenda-privacy/">Privacy policy</a> ·
+          <a href="../agenda-support/">Soporte · Support</a>
+        </p>
+        <p>© 2026 Bermudez Systems LLC</p>
+      </footer>
+    </main>
+  </body>
+</html>
