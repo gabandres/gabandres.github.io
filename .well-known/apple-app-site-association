@@ -1,4 +1,21 @@
 {
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["AE6TTXW92K.com.gabriel.agenda"],
+        "components": [
+          {
+            "/": "/callbook-invite/invite",
+            "comment": "One invitation, opened in the app. Deliberately not the whole host: any path ending in a bare /invite segment is claimed by the app, and the minting and request pages must never become one."
+          },
+          {
+            "/": "/callbook-invite/invite/*",
+            "comment": "Same path with a trailing slash or anything after it."
+          }
+        ]
+      }
+    ]
+  },
   "webcredentials": {
     "apps": ["AE6TTXW92K.com.gabriel.agenda"]
   }
