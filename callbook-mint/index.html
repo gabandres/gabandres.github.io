@@ -73,9 +73,21 @@
           browser — never uploaded, never on a server. After this you only type the
           passphrase.
         </p>
-        <label for="pem">Signing key (contents of .invite-key.pem)</label>
-        <textarea id="pem" spellcheck="false" autocapitalize="off" autocorrect="off"
-          placeholder="-----BEGIN PRIVATE KEY-----&#10;…&#10;-----END PRIVATE KEY-----"></textarea>
+        <div id="keyReady" class="card hidden">
+          <p class="label">Key received</p>
+          <p style="margin:0">Choose a passphrase below and it is stored, encrypted.</p>
+        </div>
+
+        <div id="keyWays">
+          <label for="pemFile">Pick the key file</label>
+          <input id="pemFile" type="file" accept=".pem,.txt,application/x-pem-file,text/plain" />
+          <p style="margin:8px 0 0;font-size:13px">
+            AirDrop <code style="display:inline">.invite-key.pem</code> to this device, then choose
+            it here. Or paste it instead:
+          </p>
+          <textarea id="pem" spellcheck="false" autocapitalize="off" autocorrect="off"
+            placeholder="-----BEGIN PRIVATE KEY-----&#10;…&#10;-----END PRIVATE KEY-----"></textarea>
+        </div>
         <label for="newPass">Choose a passphrase</label>
         <input id="newPass" type="password" autocomplete="new-password" />
         <label for="newPass2">Again</label>
@@ -262,6 +274,55 @@
         for (const id of ['setup', 'lock', 'app']) $(id).classList.toggle('hidden', id !== which);
       };
 
+      /**
+       * A key handed over without anybody typing it.
+       *
+       * Three ways in, and none of them is a hundred characters on a phone
+       * keyboard: a file picked from Files (AirDrop it across), a paste for
+       * anyone at a desk, and a setup link.
+       *
+       * The link carries the key in the URL **fragment**, which browsers do not
+       * send to servers — so it never reaches GitHub Pages or anything in front
+       * of it. It is wiped from the address bar and from history the instant it
+       * is read, because a key sitting in a back button is a key you have lost
+       * track of. Treat the link itself as the key: send it to yourself, use it,
+       * delete the message.
+       */
+      let pendingDer = null;
+
+      const acceptDer = (der) => {
+        pendingDer = der;
+        $('keyWays').classList.add('hidden');
+        $('keyReady').classList.remove('hidden');
+        $('newPass').focus();
+      };
+
+      const readFragmentKey = () => {
+        const match = location.hash.match(/[#&]k=([A-Za-z0-9_-]+)/);
+        if (!match) return null;
+        // Off the address bar and out of history before anything else happens.
+        history.replaceState(null, '', location.pathname + location.search);
+        try {
+          return unb64url(match[1]);
+        } catch {
+          return null;
+        }
+      };
+
+      $('pemFile').addEventListener('change', async (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        const status = $('setupStatus');
+        try {
+          acceptDer(pemToDer(await file.text()));
+          status.className = 'status ok';
+          status.textContent = `✓ Read ${file.name}`;
+        } catch (error) {
+          status.className = 'status err';
+          status.textContent = `✗ ${error.message}`;
+        }
+      });
+
       const start = () => {
         if (!crypto?.subtle) {
           document.body.innerHTML =
@@ -269,6 +330,16 @@
             '<p>It has no WebCrypto. Use Safari or Chrome.</p></main>';
           return;
         }
+
+        const fromLink = readFragmentKey();
+        if (fromLink) {
+          show('setup');
+          acceptDer(fromLink);
+          $('setupStatus').className = 'status ok';
+          $('setupStatus').textContent = '✓ Key received from the setup link.';
+          return;
+        }
+
         const stored = localStorage.getItem(STORAGE_KEY);
         show(stored ? 'lock' : 'setup');
         if (stored) $('pass').focus();
@@ -283,7 +354,7 @@
           if (pass.length < 8) throw new Error('use at least 8 characters');
           if (pass !== $('newPass2').value) throw new Error('the two passphrases differ');
 
-          const der = pemToDer($('pem').value);
+          const der = pendingDer ?? pemToDer($('pem').value);
           const key = await crypto.subtle.importKey(
             'pkcs8', der, { name: 'Ed25519' }, false, ['sign']
           );
@@ -293,6 +364,7 @@
           await storeKey(der, pass);
           signingKey = key;
           // Cleared so a screenshot of this page is not a copy of the key.
+          pendingDer = null;
           $('pem').value = '';
           $('newPass').value = '';
           $('newPass2').value = '';
