@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy Policy — Callbook</title>
+    <title>Privacy Policy — Agenda</title>
     <style>
       :root {
         --bg: #0b0a14;
@@ -12,7 +12,6 @@
         --muted: rgba(240, 238, 250, 0.62);
         --faint: rgba(240, 238, 250, 0.36);
         --accent: #8c89ff;
-        --accent-wash: rgba(140, 137, 255, 0.1);
         --hairline: rgba(235, 235, 245, 0.14);
       }
       @media (prefers-color-scheme: light) {
@@ -22,8 +21,7 @@
           --text: #14121f;
           --muted: rgba(20, 18, 31, 0.66);
           --faint: rgba(20, 18, 31, 0.42);
-          --accent: #4b47e0;
-          --accent-wash: rgba(75, 71, 224, 0.08);
+          --accent: #5b57f2;
           --hairline: rgba(20, 18, 31, 0.12);
         }
       }
@@ -59,62 +57,25 @@
         font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
         font-size: 0.88em; background: var(--hairline); padding: 1px 6px; border-radius: 5px;
       }
-      .card {
-        background: var(--accent-wash);
-        border: 1px solid var(--hairline);
-        border-radius: 14px;
-        padding: 22px 24px;
-        margin: 0 0 8px;
-      }
-      .card p:last-child { margin-bottom: 0; }
-      .card .label {
-        font-size: 12px; font-weight: 600; letter-spacing: 0.09em;
-        text-transform: uppercase; color: var(--faint); margin: 0 0 8px;
-      }
-      .email {
-        font-size: 21px; font-weight: 650; letter-spacing: -0.3px;
-        display: inline-block; margin-bottom: 12px;
-      }
       footer {
         margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--hairline);
         color: var(--faint); font-size: 14px;
       }
-      footer a { color: var(--muted); }
     </style>
   </head>
   <body>
     <main>
       <header>
-        <p class="eyebrow">Callbook for iOS</p>
+        <p class="eyebrow">Agenda for iOS</p>
         <h1>Privacy Policy</h1>
         <p class="lede">
-          Callbook keeps a private record of return visits and bible studies. Everything you write
-          stays on your iPhone, encrypted. There is no account, no cloud storage and no analytics.
-        </p>
-        <p class="lede" style="margin-top: 12px; font-size: 16px;">
-          Callbook was called <strong>Agenda</strong> until version 1.1. Same app, same developer,
-          same policy — only the name changed.
+          Agenda keeps a private record of return visits and bible studies. Everything you write is
+          encrypted on your iPhone with a passphrase only you know. There is no account, no
+          analytics, and nothing readable ever leaves your device.
         </p>
       </header>
 
-      <div class="card">
-        <p class="label">Soporte · Support</p>
-        <a class="email" href="mailto:support@bermudezsystems.com">support@bermudezsystems.com</a>
-        <p lang="es">
-          ¿Necesitas ayuda con la app? Escríbeme en español o en inglés; normalmente contesto
-          dentro de dos o tres días hábiles. Las preguntas más comunes —
-          contraseña olvidada, copias de seguridad, cambiar de dispositivo, borrar todo — están
-          respondidas en la <a href="../agenda-support/">página de soporte</a>.
-        </p>
-        <p>
-          Need help with the app? Write in English or Spanish; I normally reply within two or three
-          business days. The common questions — a forgotten password, backups, moving to a new
-          device, erasing everything — are answered on the
-          <a href="../agenda-support/">support page</a>.
-        </p>
-      </div>
-
-      <h2>What Callbook stores</h2>
+      <h2>What Agenda stores</h2>
       <p>
         Everything you enter — names, addresses, phone numbers, notes, visit dates, study details
         and service hours — is written to an encrypted database file inside the app's own storage
@@ -123,47 +84,111 @@
       <p>
         That database is encrypted with SQLCipher. The encryption key is random, and is itself
         protected by the passphrase you choose when you first open the app: your passphrase derives
-        a key (via scrypt) that unwraps the database key using AES-256-GCM. The wrapped key is held
-        in the iOS Keychain, marked so that it never syncs to iCloud or transfers to another device.
+        a key (via scrypt) that unwraps the database key using AES-256-GCM.
+      </p>
+      <p>
+        The wrapped key is stored in two places. One copy is in the iOS Keychain, marked so that it
+        never leaves this device. A second copy is written to a file in the app's own storage, which
+        means it is included in an iCloud Backup of your iPhone — deliberately, because otherwise
+        restoring a new phone from a backup would give you the encrypted database and nothing to
+        open it with. Both copies are wrapped: they are useless without your passphrase.
       </p>
       <p class="strong">
         Nobody can recover your passphrase, including the developer. If you forget it, the data is
         permanently unreadable. This is a deliberate design choice, not an oversight.
       </p>
 
-      <h2>What Callbook never does</h2>
+      <h2>What Agenda never does</h2>
       <ul>
-        <li>It does not upload, sync or back up your entries anywhere.</li>
-        <li>It has no user accounts and no login server.</li>
+        <li>It never sends your callbook &mdash; the people you visit, your notes, your
+            hours &mdash; anywhere anyone else can read. Not the developer, not Apple. The one
+            exception is the name and contact you type when asking for access, described below.</li>
+        <li>It has no password to remember and no login server. Access uses the iCloud account
+            already signed in on your device.</li>
         <li>It contains no analytics, telemetry, advertising or tracking of any kind.</li>
         <li>It contains no third-party advertising or marketing SDKs.</li>
         <li>It does not share, sell or disclose your information to anyone.</li>
       </ul>
 
+      <h2>Requesting access</h2>
+      <p>
+        Callbook is available by invitation. To be let in you send one request, which holds
+        <strong>the name and contact detail you type</strong> and an anonymous identifier that
+        Apple generates for this app alone. There is no password and nothing to create &mdash;
+        the app uses the iCloud account already signed in on your device, and never sees your
+        Apple ID, your email address or your name unless you type them into that box.
+      </p>
+      <p>
+        <strong>This is the one place Callbook collects personal information.</strong> The
+        developer can read your request, because reading it is how the decision gets made.
+        Nobody else can &mdash; not other users of the app, who cannot see that requests exist
+        at all. The request is stored in Apple's iCloud infrastructure, in a database belonging
+        to this app, and is not shared with anyone or used for anything except deciding whether
+        to grant you access.
+      </p>
+      <p>
+        The decision itself is one record holding the anonymous identifier and whether access was
+        granted. Your name and contact detail are <em>not</em> copied into it. Ask for your
+        request to be deleted at any time using the contact address at the bottom of this page,
+        and it will be.
+      </p>
+      <p>
+        Access can be withdrawn. If it is, the app stops opening on your devices &mdash;
+        <strong>your records are not deleted and stay on your device</strong>, encrypted as they
+        always were.
+      </p>
+
+      <h2>iCloud sync</h2>
+      <p>
+        Agenda can keep two of your own devices in step, and let a new iPhone pick up your agenda
+        without restoring from a backup. <strong>Sync is off until you turn it on.</strong>
+      </p>
+      <p>
+        When it is on, Agenda stores a single encrypted file in <em>your</em> private iCloud
+        database, using Apple's CloudKit. Private means exactly that: it lives in your own iCloud
+        account, and the developer has no way to reach it — not through the app, and not through
+        any dashboard Apple provides.
+      </p>
+      <p class="strong">
+        Before it is uploaded, that file is sealed with a key derived from your passphrase, which
+        never leaves your device. So it is unreadable by Apple as well. What is stored in iCloud is
+        a block of ciphertext with no names, no addresses and no notes visible in it.
+      </p>
+      <p>
+        Because the key comes from your passphrase, each device asks for it once when you enable
+        sync. And the same warning applies with more force than before: if you forget your
+        passphrase, the copy in iCloud is as permanently unreadable as the one on your phone.
+      </p>
+      <p>
+        Turning sync off, in Agenda's settings, stops any further uploads and leaves the copy in
+        iCloud alone. Deleting that copy is a separate action on the same screen.
+      </p>
+
       <h2>Location</h2>
       <p>
-        If you choose to save a location for a person, Callbook asks for permission to read your
+        If you choose to save a location for a person, Agenda asks for permission to read your
         device's current coordinates once, at that moment. The coordinates are stored in the same
         encrypted database and used only to place a pin on the map inside the app.
       </p>
       <p>
-        Location is never transmitted anywhere. The permission is optional — declining it only means
-        you cannot capture coordinates automatically. Callbook does not track your location in the
-        background.
+        Location is never transmitted to the developer or to anyone else, and is never visible to
+        Apple: if sync is on, coordinates are inside the same encrypted file as everything else. The
+        permission is optional — declining it only means you cannot capture coordinates
+        automatically. Agenda does not track your location in the background.
       </p>
 
       <h2>Face ID</h2>
       <p>
-        If you enable Face ID, the check is performed entirely by iOS. Callbook receives only a
+        If you enable Face ID, the check is performed entirely by iOS. Agenda receives only a
         yes-or-no answer and never has access to your biometric data, which never leaves Apple's
         Secure Enclave.
       </p>
 
       <h2>Over-the-air updates</h2>
       <p>
-        Callbook uses Expo's update service so improvements can be delivered without a full App Store
-        release. This is the one connection the app makes. On launch it contacts
-        <code>u.expo.dev</code> to ask whether a newer version of the app's code exists.
+        Agenda uses Expo's update service so improvements can be delivered without a full App Store
+        release. On launch it contacts <code>u.expo.dev</code> to ask whether a newer version of the
+        app's code exists.
       </p>
       <p>
         That request carries technical information only — the platform, the app's runtime and update
@@ -172,13 +197,17 @@
         contacts or locations are sent.</strong>
       </p>
       <p>
+        Together with iCloud sync above, this is the complete list of connections Agenda makes.
+        There are no others.
+      </p>
+      <p>
         Expo's own privacy practices are described at
         <a href="https://expo.dev/privacy" rel="noopener">expo.dev/privacy</a>.
       </p>
 
       <h2>Exporting your data</h2>
       <p>
-        Callbook can export a copy of everything as a JSON file through the iOS share sheet. This
+        Agenda can export a copy of everything as a JSON file through the iOS share sheet. This
         happens only when you ask for it, and you choose where the file goes.
       </p>
       <p class="strong">
@@ -190,14 +219,23 @@
       <h2>Deleting your data</h2>
       <p>
         "Erase everything" in Settings deletes the encrypted database and the stored key, leaving
-        nothing recoverable. Deleting the app from your iPhone has the same effect. Because nothing
-        was ever uploaded, there is no copy anywhere else to request the deletion of.
+        nothing recoverable. Deleting the app from your iPhone has the same effect on that device.
+      </p>
+      <p>
+        If you used iCloud sync, Agenda also deletes the encrypted copy in your own iCloud account.
+        That needs a connection, so if your iPhone cannot reach iCloud at that moment, Agenda tells
+        you so and the copy stays until you try again — though it is already unreadable by then,
+        because the key that opened it was destroyed with everything else.
+      </p>
+      <p>
+        No copy exists anywhere else. There is no server of the developer's holding your data, and
+        so nothing to request the deletion of.
       </p>
 
       <h2>Children</h2>
       <p>
-        Callbook is a personal record-keeping tool intended for adults. It does not knowingly collect
-        information from children, because it does not collect information from anyone.
+        Agenda is a personal record-keeping tool intended for adults. It is not directed at children
+        and does not knowingly gather information about them.
       </p>
 
       <h2>Changes</h2>
@@ -207,29 +245,13 @@
         release notes.
       </p>
 
-      <h2>Support and contact</h2>
+      <h2>Contact</h2>
       <p>
-        Questions about this policy, about the app, or about anything that is not working go to the
-        same place — the developer, directly:
-      </p>
-      <p class="strong">
-        <a href="mailto:support@bermudezsystems.com">support@bermudezsystems.com</a>
-      </p>
-      <p>
-        Write in English or Spanish. Replies normally come within two or three business days.
-        Step-by-step answers to the questions that come up most — a forgotten password, making and
-        restoring backups, moving to a new device, exporting to a computer, erasing everything — are
-        on the <a href="../agenda-support/">support page</a>.
-      </p>
-      <p>
-        Please do not include your password, or screenshots showing the names, addresses or notes of
-        the people you visit. None of that is needed to help you, and it is yours.
+        Questions about this policy can be directed to the developer via
+        <a href="https://github.com/gabandres" rel="noopener">github.com/gabandres</a>.
       </p>
 
-      <footer>
-        <a href="../agenda-support/">Soporte · Support</a><br />
-        Last updated 24 August 2026.
-      </footer>
+      <footer>Last updated 28 August 2026.</footer>
     </main>
   </body>
 </html>
