@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy Policy — Agenda</title>
+    <title>Privacy Policy — Callbook</title>
     <style>
       :root {
         --bg: #0b0a14;
@@ -66,16 +66,16 @@
   <body>
     <main>
       <header>
-        <p class="eyebrow">Agenda for iOS</p>
+        <p class="eyebrow">Callbook for iOS</p>
         <h1>Privacy Policy</h1>
         <p class="lede">
-          Agenda keeps a private record of return visits and bible studies. Everything you write is
-          encrypted on your iPhone with a password only you know. There are no analytics, and
+          Callbook keeps a private record of return visits and bible studies. Everything you write
+          is encrypted on your iPhone with a password only you know. There are no analytics, and
           nothing readable ever leaves your device.
         </p>
       </header>
 
-      <h2>What Agenda stores</h2>
+      <h2>What Callbook stores</h2>
       <p>
         Everything you enter — names, addresses, phone numbers, notes, visit dates, study details
         and service hours — is written to an encrypted database file inside the app's own storage
@@ -87,11 +87,13 @@
         a key (via scrypt) that unwraps the database key using AES-256-GCM.
       </p>
       <p>
-        <strong>Your password is never sent anywhere and nothing checks it.</strong> There is no
-        login server to check it against. It is not a credential that is verified &mdash; it is
-        what produces the key, and a wrong password simply produces bytes that do not decrypt.
-        That is also why the same password works on a second device: it is the only thing the two
-        devices share, and it is what lets you sign in somewhere new and get your callbook back.
+        <strong>Your password is never sent anywhere.</strong> When you sign in, your device
+        derives two separate values from it: one stays and produces the encryption key; the other
+        &mdash; which cannot be turned back into your password or into the key &mdash; is what the
+        sign-in service verifies. So there is something that checks you typed the right password,
+        and it still never sees the password: a wrong one is refused at sign-in and, more
+        fundamentally, produces bytes that do not decrypt. The same password works on a second
+        device because it is the only thing your devices share.
       </p>
       <p>
         The wrapped key is stored in two places. One copy is in the iOS Keychain, marked so that it
@@ -102,20 +104,21 @@
       </p>
       <p class="strong">
         Nobody can recover your password, including the developer. If you forget it, the data is
-        permanently unreadable &mdash; on your device and in the iCloud copy, because the same key
-        seals both. This is a deliberate design choice, not an oversight: an app with no server
+        permanently unreadable &mdash; on your device and in any synced copy, because the same
+        password stands behind both. This is a deliberate design choice, not an oversight: an app with no server
         cannot reset what it has no way to verify.
       </p>
 
-      <h2>What Agenda never does</h2>
+      <h2>What Callbook never does</h2>
       <ul>
         <li>It never sends your callbook &mdash; the people you visit, your notes, your
-            hours &mdash; anywhere anyone else can read. Not the developer, not Apple. The one
-            exception is the name and email address on your account, described below.</li>
-        <li>It has no login server. Your password is never transmitted and never checked by
-            anyone &mdash; it only ever derives the key on your own device.</li>
-        <li>It never stores your password, or a hash of it, anywhere. There is nothing to leak
-            and nothing to reset.</li>
+            hours &mdash; anywhere anyone else can read. Not the developer, not Google, not
+            Apple. The one exception is the name and email address on your account, described
+            below.</li>
+        <li>It never transmits your password. Sign-in verifies a value derived from it on your
+            device, and that value cannot recreate the password or the encryption key.</li>
+        <li>Nothing anywhere holds your password or anything that recovers it. A breach of the
+            sign-in service would expose no key and none of your data.</li>
         <li>It contains no analytics, telemetry, advertising or tracking of any kind.</li>
         <li>It contains no third-party advertising or marketing SDKs.</li>
         <li>It does not share, sell or disclose your information to anyone.</li>
@@ -123,45 +126,40 @@
 
       <h2>Your account</h2>
       <p>
-        Callbook is by approval, so it needs to know who you are. When you create an account you
-        give <strong>a name and an email address</strong>, and choose a password. You can supply
-        the name and address in two ways:
+        Callbook is by approval, so it needs to know who you are. Accounts are held by Google's
+        Firebase Authentication (project <code>callbook-access</code>). When you create one you
+        give <strong>an email address</strong> and choose a password &mdash; or use
+        <strong>Sign in with Apple</strong>, in which case Apple vouches for the account and, if
+        you choose <em>Hide My Email</em>, gives a private forwarding address so Callbook never
+        sees your real one. To ask for access you also give a name and a contact detail for the
+        one person who approves; whether your account came through Apple is recorded with the
+        request, checked by the server rather than taken on trust.
       </p>
-      <ul>
-        <li><strong>Sign in with Apple</strong> &mdash; Apple confirms them, so the person
-            approving access knows the address is real. If you choose <em>Hide My Email</em>,
-            Apple gives a private forwarding address instead and Callbook never sees your real
-            one. Apple also provides an identifier for this app alone, which identifies you
-            nowhere else.</li>
-        <li><strong>Type them yourself</strong> &mdash; if you would rather not use Sign in with
-            Apple, or it is unavailable. Nothing is verified in that case, and the person
-            approving access is told so.</li>
-      </ul>
       <p>
         The password is not part of your identity and is never sent with it. See above: it stays
         on your device and produces your encryption key.
       </p>
       <p>
         <strong>You can sign out at any time</strong>, from Settings. That removes Callbook from
-        the device and leaves the encrypted copy in your own iCloud untouched, so signing back in
-        with the same email and password brings your callbook back. Erasing everything, also in
-        Settings, destroys both.
+        the device and leaves any synced copy untouched, so signing back in with the same email
+        and password brings your callbook back. Erasing everything, also in Settings, destroys
+        both.
       </p>
       <p>
-        <strong>This is the only personal information Callbook collects.</strong> Your name,
-        your email address and the per-app identifier are sent to the developer so that access
-        can be granted. The developer can read them, because reading them is how the decision
-        gets made.
-        Nobody else can &mdash; not other users of the app, who cannot see that requests exist
-        at all. It is stored in Apple's iCloud infrastructure, in a database belonging to this
-        app, and is not shared with anyone or used for anything except deciding whether to grant
-        you access.
+        <strong>This is the only personal information Callbook collects.</strong> Your email
+        address, an anonymous account identifier, and the name and contact you put on your access
+        request. The developer can read the request, because reading it is how the decision gets
+        made. Nobody else can &mdash; not other users of the app, who cannot see that requests
+        exist at all; this is enforced by the database's own security rules, not by the app. It
+        is stored in Google's Firebase, in a database belonging to this app, and is not shared
+        with anyone or used for anything except deciding whether to grant you access. Google acts
+        as a processor and its practices are described at
+        <a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a>.
       </p>
       <p>
-        The decision itself is one record holding the anonymous identifier and whether access was
-        granted. Your name and contact detail are <em>not</em> copied into it. Ask for your
-        request to be deleted at any time using the contact address at the bottom of this page,
-        and it will be.
+        The decision is a yes-or-no on that same request. Erasing your account deletes the
+        request, name and contact included; you can also ask for it to be deleted at any time
+        using the contact address at the bottom of this page.
       </p>
       <p>
         Access can be withdrawn. If it is, the app stops opening on your devices &mdash;
@@ -169,67 +167,75 @@
         always were.
       </p>
 
-      <h2>iCloud sync</h2>
+      <h2>Sync between your devices</h2>
       <p>
-        Agenda can keep two of your own devices in step, and let a new iPhone pick up your agenda
-        without restoring from a backup. <strong>Sync is off until you turn it on.</strong>
+        Callbook can keep two of your own devices in step, and let a new iPhone pick up your
+        callbook without restoring from a backup. <strong>Sync is off until you turn it
+        on.</strong>
       </p>
       <p>
-        When it is on, Agenda stores a single encrypted file in <em>your</em> private iCloud
-        database, using Apple's CloudKit. Private means exactly that: it lives in your own iCloud
-        account, and the developer has no way to reach it — not through the app, and not through
-        any dashboard Apple provides.
+        When it is on, Callbook stores a single encrypted copy of your callbook in the app's
+        Firebase database, filed under your account and readable by no other account &mdash; not
+        even the person who approves access.
       </p>
       <p class="strong">
-        Before it is uploaded, that file is sealed with a key derived from your password, which
-        never leaves your device. So it is unreadable by Apple as well. What is stored in iCloud is
-        a block of ciphertext with no names, no addresses and no notes visible in it.
+        Before it is uploaded, that copy is sealed with a key derived from a passphrase that
+        never leaves your device. So it is unreadable by Google, and by the developer &mdash; not
+        through the app, and not through any dashboard. What sits on the server is a block of
+        ciphertext with no names, no addresses and no notes visible in it.
       </p>
       <p>
-        Because the key comes from your password, each device asks for it once when you enable
-        sync. And the same warning applies with more force than before: if you forget your
-        password, the copy in iCloud is as permanently unreadable as the one on your phone.
+        Because the key comes from that passphrase, each device asks for it once when you enable
+        sync. And the warning applies with full force: forget it and the copy in the cloud is as
+        permanently unreadable as the one on your phone.
       </p>
       <p>
-        Turning sync off, in Agenda's settings, stops any further uploads and leaves the copy in
-        iCloud alone. Deleting that copy is a separate action on the same screen.
+        Turning sync off, in Settings, stops any further uploads and leaves the copy alone.
+        Deleting that copy is a separate action on the same screen.
       </p>
 
       <h2>Location</h2>
       <p>
-        If you choose to save a location for a person, Agenda asks for permission to read your
+        If you choose to save a location for a person, Callbook asks for permission to read your
         device's current coordinates once, at that moment. The coordinates are stored in the same
         encrypted database and used only to place a pin on the map inside the app.
       </p>
       <p>
-        Location is never transmitted to the developer or to anyone else, and is never visible to
-        Apple: if sync is on, coordinates are inside the same encrypted file as everything else. The
-        permission is optional — declining it only means you cannot capture coordinates
-        automatically. Agenda does not track your location in the background.
+        Location is never transmitted to the developer or to anyone else: if sync is on,
+        coordinates travel inside the same encrypted copy as everything else, unreadable to
+        Google and to the developer alike. The permission is optional — declining it only means
+        you cannot capture coordinates automatically. Callbook does not track your location in
+        the background.
       </p>
 
       <h2>Face ID</h2>
       <p>
-        If you enable Face ID, the check is performed entirely by iOS. Agenda receives only a
+        If you enable Face ID, the check is performed entirely by iOS. Callbook receives only a
         yes-or-no answer and never has access to your biometric data, which never leaves Apple's
         Secure Enclave.
       </p>
 
       <h2>Over-the-air updates</h2>
       <p>
-        Agenda uses Expo's update service so improvements can be delivered without a full App Store
-        release. On launch it contacts <code>u.expo.dev</code> to ask whether a newer version of the
-        app's code exists.
+        Callbook uses Expo's update service so improvements can be delivered without a full App
+        Store release. On launch it contacts <code>u.expo.dev</code> to ask whether a newer
+        version of the app's code exists.
       </p>
       <p>
-        That request carries technical information only — the platform, the app's runtime and update
-        identifiers — and, as with any internet request, your device's IP address is visible to the
-        server. <strong>No part of your agenda is included, and none of your entries, notes,
-        contacts or locations are sent.</strong>
+        That request carries technical information only — the platform, the app's runtime and
+        update identifiers — and, as with any internet request, your device's IP address is
+        visible to the server. <strong>No part of your callbook is included, and none of your
+        entries, notes, contacts or locations are sent.</strong>
       </p>
       <p>
-        Together with iCloud sync above, this is the complete list of connections Agenda makes.
-        There are no others.
+        One notification exists in the whole app, and only the developer's own device ever
+        registers for it: when somebody asks for access, it says a fixed sentence with nobody's
+        name in it, delivered through Expo's push service.
+      </p>
+      <p>
+        Together with the account and sync sections above, this is the complete list of
+        connections Callbook makes &mdash; Expo's update service and Google's Firebase. There are
+        no others.
       </p>
       <p>
         Expo's own privacy practices are described at
@@ -238,7 +244,7 @@
 
       <h2>Exporting your data</h2>
       <p>
-        Agenda can export a copy of everything as a JSON file through the iOS share sheet. This
+        Callbook can export a copy of everything as a JSON file through the iOS share sheet. This
         happens only when you ask for it, and you choose where the file goes.
       </p>
       <p class="strong">
@@ -249,24 +255,24 @@
 
       <h2>Deleting your data</h2>
       <p>
-        "Erase everything" in Settings deletes the encrypted database and the stored key, leaving
-        nothing recoverable. Deleting the app from your iPhone has the same effect on that device.
+        "Erase everything" in Settings deletes the encrypted database and the stored key on the
+        device, the encrypted copy on the server, your access request &mdash; the one document
+        holding your name and contact &mdash; and the account itself. A server-side routine
+        removes anything that step could not reach. Deleting the app from your iPhone erases the
+        device's copy; the account and anything synced remain until you erase them from inside
+        the app or ask via the contact below.
       </p>
       <p>
-        If you used iCloud sync, Agenda also deletes the encrypted copy in your own iCloud account.
-        That needs a connection, so if your iPhone cannot reach iCloud at that moment, Agenda tells
-        you so and the copy stays until you try again — though it is already unreadable by then,
-        because the key that opened it was destroyed with everything else.
-      </p>
-      <p>
-        No copy exists anywhere else. There is no server of the developer's holding your data, and
-        so nothing to request the deletion of.
+        Erasing needs a connection to reach the server. If your iPhone is offline at that moment,
+        Callbook tells you so and the server copy stays until you try again &mdash; though it is
+        already unreadable by then, because the key that opened it was destroyed with everything
+        else.
       </p>
 
       <h2>Children</h2>
       <p>
-        Agenda is a personal record-keeping tool intended for adults. It is not directed at children
-        and does not knowingly gather information about them.
+        Callbook is a personal record-keeping tool intended for adults. It is not directed at
+        children and does not knowingly gather information about them.
       </p>
 
       <h2>Changes</h2>
@@ -282,7 +288,7 @@
         <a href="https://github.com/gabandres" rel="noopener">github.com/gabandres</a>.
       </p>
 
-      <footer>Last updated 29 August 2026.</footer>
+      <footer>Last updated 30 August 2026.</footer>
     </main>
   </body>
 </html>
