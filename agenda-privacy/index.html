@@ -560,10 +560,13 @@
           entries, notes, contacts or locations are sent.</strong>
         </p>
         <p>
-          Notifications exist only for the developer's own device, which is the only one that ever
-          registers for them: when somebody asks for access, or joins with an invite code, it
-          receives one of two fixed sentences with nobody's name in either, delivered through
-          Expo's push service.
+          Notifications are three fixed sentences, none with a name in any of them, all delivered
+          through Expo's push service. Two go to the developer's own device: that somebody asked
+          for access, or that somebody joined with an invite. The third can go to you &mdash;
+          while you wait for approval, the app offers to notify you the moment you are let in.
+          Your device registers for that only if you grant iOS's notification permission there,
+          and declining costs you nothing but the banner: the waiting screen keeps checking
+          either way.
         </p>
         <div class="callout">
           <p>
