@@ -162,6 +162,18 @@
         using the contact address at the bottom of this page.
       </p>
       <p>
+        <strong>Invites.</strong> Someone who already has access can share a one-time invite
+        code. Codes live in the same Firebase database; a code records only the anonymous
+        account identifier of whoever created it, when it was created and when it expires
+        &mdash; no names, and nothing about the person it is given to. Entering a code files a
+        small record of your own &mdash; your anonymous account identifier and the code &mdash;
+        and if the code is valid, access is granted automatically and the person who approves is
+        notified that it happened. The code itself carries no personal information, and the
+        record of redeeming it is removed once it has done its job. An invite changes only how
+        the yes arrives; everything else on this page &mdash; what is collected, who can read
+        it, how it is deleted &mdash; is identical either way.
+      </p>
+      <p>
         Access can be withdrawn. If it is, the app stops opening on your devices &mdash;
         <strong>your records are not deleted and stay on your device</strong>, encrypted as they
         always were.
@@ -228,9 +240,10 @@
         entries, notes, contacts or locations are sent.</strong>
       </p>
       <p>
-        One notification exists in the whole app, and only the developer's own device ever
-        registers for it: when somebody asks for access, it says a fixed sentence with nobody's
-        name in it, delivered through Expo's push service.
+        Notifications exist only for the developer's own device, which is the only one that ever
+        registers for them: when somebody asks for access, or joins with an invite code, it
+        receives one of two fixed sentences with nobody's name in either, delivered through
+        Expo's push service.
       </p>
       <p>
         Together with the account and sync sections above, this is the complete list of
@@ -288,7 +301,7 @@
         <a href="https://github.com/gabandres" rel="noopener">github.com/gabandres</a>.
       </p>
 
-      <footer>Last updated 30 August 2026.</footer>
+      <footer>Last updated 1 September 2026.</footer>
     </main>
   </body>
 </html>
