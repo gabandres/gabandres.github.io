@@ -369,7 +369,7 @@
         <ul>
           <li>It never sends your callbook &mdash; the people you visit, your notes, your
               hours &mdash; anywhere anyone else can read. Not the developer, not Google, not
-              Apple. The one exception is the name and email address on your account, described
+              Apple. The one exception is the email address on your account, described
               below.</li>
           <li>It never transmits your password. Sign-in verifies a value derived from it on your
               device, and that value cannot recreate the password or the encryption key.</li>
@@ -392,14 +392,13 @@
           <h2>Your account</h2>
         </div>
         <p>
-          Callbook is by approval, so it needs to know who you are. Accounts are held by Google's
-          Firebase Authentication (project <code>callbook-access</code>). When you create one you
-          give <strong>an email address</strong> and choose a password &mdash; or use
-          <strong>Sign in with Apple</strong>, in which case Apple vouches for the account and, if
-          you choose <em>Hide My Email</em>, gives a private forwarding address so Callbook never
-          sees your real one. To ask for access you also give a name and a contact detail for the
-          one person who approves; whether your account came through Apple is recorded with the
-          request, checked by the server rather than taken on trust.
+          Callbook needs an account only so that sync and sign-in on a second device have something
+          to be keyed to. There is no approval step and no administrator: whoever signs in is in.
+          Accounts are held by Google's Firebase Authentication (project <code>callbook-access</code>).
+          When you create one you give <strong>an email address</strong> and choose a password
+          &mdash; or use <strong>Sign in with Apple</strong>, in which case Apple vouches for the
+          account and, if you choose <em>Hide My Email</em>, gives a private forwarding address so
+          Callbook never sees your real one. No name is asked for anywhere.
         </p>
         <p>
           The password is not part of your identity and is never sent with it. See above: it stays
@@ -414,47 +413,16 @@
         <div class="callout">
           <p>
             <strong>This is the only personal information Callbook collects:</strong> your email
-            address, an anonymous account identifier, and the name and contact you put on your
-            access request.
+            address and an anonymous account identifier. Nothing else &mdash; no name, no contact
+            detail, no record of when you use the app.
           </p>
         </div>
         <p>
-          The developer can read the request, because reading it is how the decision gets
-          made. Nobody else can &mdash; not other users of the app, who cannot see that requests
-          exist at all; this is enforced by the database's own security rules, not by the app. It
-          is stored in Google's Firebase, in a database belonging to this app, and is not shared
-          with anyone or used for anything except deciding whether to grant you access. Google acts
-          as a processor and its practices are described at
+          The account record is stored in Google's Firebase, in a database belonging to this app.
+          Nobody reads a list of who signed up &mdash; there is no such screen in the app and no
+          person whose job that is &mdash; and it is not shared with anyone or used for anything
+          except signing you in. Google acts as a processor and its practices are described at
           <a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a>.
-        </p>
-        <p>
-          The decision is a yes-or-no on that same request. Erasing your account deletes the
-          request, name and contact included; you can also ask for it to be deleted at any time
-          using the contact address at the bottom of this page.
-        </p>
-        <p>
-          Once you are let in, the app stamps that same request with the moment your account
-          first opened the app and the app version it runs &mdash; one timestamp that never
-          changes and one version string, nothing more. It exists so the person who approved you
-          can tell "granted" apart from "actually in", is visible only to them, and is deleted
-          with the request. It is not a record of when or how you use the app.
-        </p>
-        <p>
-          <strong>Invites.</strong> Someone who already has access can share a one-time invite
-          code. Codes live in the same Firebase database; a code records only the anonymous
-          account identifier of whoever created it, when it was created and when it expires
-          &mdash; no names, and nothing about the person it is given to. Entering a code files a
-          small record of your own &mdash; your anonymous account identifier and the code &mdash;
-          and if the code is valid, access is granted automatically and the person who approves is
-          notified that it happened. The code itself carries no personal information, and the
-          record of redeeming it is removed once it has done its job. An invite changes only how
-          the yes arrives; everything else on this page &mdash; what is collected, who can read
-          it, how it is deleted &mdash; is identical either way.
-        </p>
-        <p>
-          Access can be withdrawn. If it is, the app stops opening on your devices &mdash;
-          <strong>your records are not deleted and stay on your device</strong>, encrypted as they
-          always were.
         </p>
       </section>
 
@@ -475,8 +443,8 @@
         </p>
         <p>
           When it is on, Callbook stores a single encrypted copy of your callbook in the app's
-          Firebase database, filed under your account and readable by no other account &mdash; not
-          even the person who approves access.
+          Firebase database, filed under your account and readable by no other account. There is
+          no administrator account with a different rule.
         </p>
         <div class="callout">
           <p>
@@ -560,13 +528,9 @@
           entries, notes, contacts or locations are sent.</strong>
         </p>
         <p>
-          Notifications are three fixed sentences, none with a name in any of them, all delivered
-          through Expo's push service. Two go to the developer's own device: that somebody asked
-          for access, or that somebody joined with an invite. The third can go to you &mdash;
-          while you wait for approval, the app offers to notify you the moment you are let in.
-          Your device registers for that only if you grant iOS's notification permission there,
-          and declining costs you nothing but the banner: the waiting screen keeps checking
-          either way.
+          Callbook sends no push notifications. The one notification it can show &mdash; that an
+          update has been downloaded and is ready &mdash; is created on your device and never
+          leaves it; nothing registers your device with any notification service.
         </p>
         <div class="callout">
           <p>
@@ -615,8 +579,7 @@
         </div>
         <p>
           "Erase everything" in Settings deletes the encrypted database and the stored key on the
-          device, the encrypted copy on the server, your access request &mdash; the one document
-          holding your name and contact &mdash; and the account itself. A server-side routine
+          device, the encrypted copy on the server, and the account itself. A server-side routine
           removes anything that step could not reach. Deleting the app from your iPhone erases the
           device's copy; the account and anything synced remain until you erase them from inside
           the app or ask via the contact below.
@@ -685,7 +648,7 @@
             />
           </svg>
         </div>
-        <div>Last updated 1 September 2026.</div>
+        <div>Last updated 2 September 2026.</div>
       </footer>
     </main>
   </body>
